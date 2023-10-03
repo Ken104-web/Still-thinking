@@ -12,8 +12,7 @@ class User(db.Model):
 
     reviews = db.relationship('Review', backref='user')
 
-
-class TouristAttrationSite(db.Model):
+class TouristAttractionSite(db.Model):
     __tablename__ = 'sites'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -22,14 +21,14 @@ class TouristAttrationSite(db.Model):
     rating = db.Column(db.Integer)
 
     reviews = db.relationship('Review', backref='site')
+
 class Review(db.Model):
-    tablename = "reviews"
+    __tablename__ = "reviews"
 
     id = db.Column(db.Integer, primary_key=True)
     rating = db.Column(db.String)
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    touristattrationsite_id = db.Column(db.Integer, db.ForeignKey('sites.id'))
+    tourist_attraction_site_id = db.Column(db.Integer, db.ForeignKey('sites.id'))
 
-    User.sites = db.relationship('TouristAttractionSite',secondary=user_site_table, backref=db.backref('users'))
-
+    User.sites = db.relationship('TouristAttractionSite', secondary=user_site_table, backref=db.backref('users'))
