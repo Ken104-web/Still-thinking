@@ -8,7 +8,7 @@ user_site_table = db.Table('user_site_association',
 )
 class User(db.Model, SerializerMixin):
     __tablename__ = "users"
-    serialize_rules = ('-sites.user',)
+    serialize_rules = ('-sites',)
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String)
@@ -31,7 +31,7 @@ class TouristAttractionSite(db.Model, SerializerMixin):
     
     # users = db.relationship('User', secondary=user_site_table, back_populates='sites')
 
-class Review(db.Model,):
+class Review(db.Model):
     __tablename__ = "reviews"
 
 
