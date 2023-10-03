@@ -16,6 +16,7 @@ class TouristAttractionSite(db.Model):
     __tablename__ = 'sites'
 
     id = db.Column(db.Integer, primary_key=True)
+    touristSite = db.Column(db.String)
     location = db.Column(db.String)
     description = db.Column(db.String)
     rating = db.Column(db.Integer)
