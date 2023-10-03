@@ -72,7 +72,8 @@ class GetReview(Resource):
             200,
         )
         return resp
-    def post(self, id):
+class PostReviews(Resource):
+    def post(self):
             data = request.get_json()        
             post_review = Review(
                 rating = data['String']
