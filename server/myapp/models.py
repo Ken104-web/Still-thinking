@@ -33,7 +33,7 @@ class TouristAttractionSite(db.Model, SerializerMixin):
 
 class Review(db.Model):
     __tablename__ = "reviews"
-
+        
 
     id = db.Column(db.Integer, primary_key=True)
     rating = db.Column(db.String)

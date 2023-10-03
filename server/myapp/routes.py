@@ -73,14 +73,25 @@ class GetReview(Resource):
         )
         return resp
 class PostReviews(Resource):
-    def post(self):
-            data = request.get_json()        
-            post_review = Review(
-                rating = data['String']
-            )
-            db.session.add(post_review)
-            db.session.commit()
-            return make_response(post_review.to_dict(), 201)
+     def post(self):
+        data = request.get_json()
+        if 'rating' not in data:
+            return make_response({'error': 'Rating is required'}, 400)
+
+        post_review = Review(rating=data['rating'])
+        db.session.add(post_review)
+        db.session.commit()
+
+        if post_review.id:
+            response_data = {
+                'message': 'Review added successfully',
+                'review_id': post_review.id,
+                'rating': post_review.rating
+            }
+            return make_response(response_data, 201)
+        else:
+            return make_response({'error': 'Failed to add review'}, 500)
+
 
 api.add_resource(GetReview, '/reviews')
 
