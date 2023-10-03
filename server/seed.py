@@ -1,4 +1,4 @@
-from myapp.models import User, TouristAttractionSite, Review
+from myapp.models import User, TouristAttractionSite, Review, user_site_table
 from myapp import db, app
 from faker import Faker
 import random
@@ -112,8 +112,20 @@ with app.app_context():
     db.session.commit()
 
     # join = []
-    # for i in range(20):
-    #     j = 
+    # for i in db.session.query(Review).all():
+    #     j = user_site_table.insert().values(user_id=i.user_id, sites_id =i. tourist_attraction_site_id)
+    #     join.append(j)
+    # db.session.add_all(join)
+    # db.session.commit()
+
+    join = []
+    for review in db.session.query(Review).all():
+        user_site = user_site_table(user_id=review.user_id, sites_id=review.tourist_attraction_site_id)
+        join.append(user_site)
+
+    db.session.add_all(join)
+    db.session.commit()
+
 
 
 

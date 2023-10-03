@@ -1,20 +1,26 @@
 from myapp import db
+from sqlalchemy_serializer import SerializerMixin
+
 
 user_site_table = db.Table('user_site_association',
-    db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
-    db.Column('site_id', db.Integer, db.ForeignKey('sites.id'))
+    db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+    db.Column('site_id', db.Integer, db.ForeignKey('sites.id'), primary_key=True)
 )
-class User(db.Model):
+class User(db.Model, SerializerMixin):
     __tablename__ = "users"
+    serialize_rules = ('-sites.user',)
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String)
 
     reviews = db.relationship('Review', backref='user')
 
-class TouristAttractionSite(db.Model):
+    # sites2 = db.relationship('Reviews', secondary=user_site_table, back_populates = 'users')
+
+class TouristAttractionSite(db.Model, SerializerMixin):
     __tablename__ = 'sites'
 
+    seralize_rules = ('-user.sites',)
     id = db.Column(db.Integer, primary_key=True)
     touristSite = db.Column(db.String)
     location = db.Column(db.String)
@@ -23,8 +29,10 @@ class TouristAttractionSite(db.Model):
 
     reviews = db.relationship('Review', backref='site')
 
-class Review(db.Model):
+class Review(db.Model, SerializerMixin):
     __tablename__ = "reviews"
+
+    # serialize_rules = ('-rating',)
 
     id = db.Column(db.Integer, primary_key=True)
     rating = db.Column(db.String)
