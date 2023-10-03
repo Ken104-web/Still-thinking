@@ -117,6 +117,7 @@ with app.app_context():
     #     join.append(j)
     # db.session.add_all(join)
     # db.session.commit()
+ 
 
     join = []
     for review in db.session.query(Review).all():

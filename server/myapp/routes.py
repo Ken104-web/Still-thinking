@@ -27,6 +27,19 @@ class GetUsers(Resource):
         return resp
 api.add_resource(GetUsers, '/users')
 
+class GetUserId(Resource):
+    def get(self, id):
+        each_user = User.query.filter_by(id=id).first()
+        if each_user:
+            user_data = each_user.to_dict()
+            resp = make_response(
+                user_data,
+                200,
+            )
+            return resp
+        else:
+            raise ValueError('User not found')
+api.add_resource(GetUserId, '/users/<int:id>')
 class GetSites(Resource):
     def get(self):
         sites = [site.to_dict() for site in TouristAttractionSite.query.all()]

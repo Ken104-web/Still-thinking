@@ -15,8 +15,6 @@ class User(db.Model, SerializerMixin):
 
     reviews = db.relationship('Review', backref='user')
 
-    # sites2 = db.relationship('Reviews', secondary=user_site_table, back_populates = 'users')
-
 class TouristAttractionSite(db.Model, SerializerMixin):
     __tablename__ = 'sites'
 
@@ -29,10 +27,9 @@ class TouristAttractionSite(db.Model, SerializerMixin):
 
     reviews = db.relationship('Review', backref='site')
 
-class Review(db.Model, SerializerMixin):
+class Review(db.Model,):
     __tablename__ = "reviews"
 
-    # serialize_rules = ('-rating',)
 
     id = db.Column(db.Integer, primary_key=True)
     rating = db.Column(db.String)
