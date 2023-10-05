@@ -4,8 +4,6 @@ function Header(){
         <header>
             <div id='banner'>
             <h1>Tour Guide</h1>
-            
-            <h2>Popular Sites</h2>
             </div>
         </header>
     )

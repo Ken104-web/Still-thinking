@@ -3,6 +3,7 @@ import Header from './Header'
 import Home from "./Home";
 
 import './App.css'
+import Site from "./site";
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
         <Header />
         <Routes>
           <Route exact path="/" element={<Home />}/>
+          <Route exact path="/specificsite/:id" element={<Site/>}/>
         </Routes>
        
       </div>
