@@ -23,6 +23,7 @@ a:hover {
   color: #535bf2;
 }
 
+
 body {
   margin: 0;
   display: flex;
@@ -67,3 +68,46 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* div {
+width: 416px;
+height: 468px;
+flex-shrink: 0;
+background-image: url("image.jpg");
+background-size: cover; 
+background-position: center center; 
+}
+
+
+
+#banner {
+  color: #e00c4b;
+  font-family: Inter;
+  font-size: 13px;
+  
+ 
+}
+
+#banner {
+  position: relative; 
+}
+
+h1 {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  margin: 0; 
+}
+
+h2 {
+  position: absolute; 
+  top: 250px;
+  text-align: center; 
+} */
+
+
+
+
+
+
+
