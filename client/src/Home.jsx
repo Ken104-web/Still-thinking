@@ -31,7 +31,7 @@ return (
               <Link to={`specificsite/${site.id}`}>{site.location}</Link>
             </option>
           ))}
-                     </select>
+            </select>
             </span>
             <ul>
                 <h1>Popular sites</h1>

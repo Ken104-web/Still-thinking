@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {   useParams } from "react-router-dom"
+import {  Link, useParams } from "react-router-dom"
 
 
 function Site(){
@@ -29,7 +29,8 @@ function Site(){
                         <p key={sites.id}>
                         </p> */}
                         <p>Location: {sites.location}</p>
-                        <p>Description: {sites.description}</p> 
+                        <p>Description: <Link to={`showreview/${sites.id}`}>{sites.description}</Link></p> 
+
                     <p>Rating: {sites.rating}</p>
                 
                 <button onClick={countNoOfVisitors}>
