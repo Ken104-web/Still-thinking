@@ -8,8 +8,7 @@ user_site_table = db.Table('user_site_association',
 )
 class User(db.Model, SerializerMixin):
     __tablename__ = "users"
-    serialize_rules = ('-sites',)
-
+    serialize_rules = ('-sites','-reviews.user',)
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String)
 
@@ -21,6 +20,7 @@ class TouristAttractionSite(db.Model, SerializerMixin):
     __tablename__ = 'sites'
 
     serialize_rules = ('-user.sites',)
+
     id = db.Column(db.Integer, primary_key=True)
     touristSite = db.Column(db.String)
     location = db.Column(db.String)
@@ -31,9 +31,12 @@ class TouristAttractionSite(db.Model, SerializerMixin):
     
     # users = db.relationship('User', secondary=user_site_table, back_populates='sites')
 
-class Review(db.Model):
+class Review(db.Model, SerializerMixin):
     __tablename__ = "reviews"
-        
+
+
+    serialize_rules = ('-user.reviews','-site.reviews','-user.sites.reviews',)
+    # serialize_rules = ('-users',)
 
     id = db.Column(db.Integer, primary_key=True)
     rating = db.Column(db.String)
@@ -47,5 +50,12 @@ class Review(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     tourist_attraction_site_id = db.Column(db.Integer, db.ForeignKey('sites.id'))
 
-    User.sites = db.relationship('TouristAttractionSite', secondary=user_site_table, backref=db.backref('users'))
+    # def to_dict(self):
+    #     return {
+    #         'id': self.id,
+    #         'rating': self.rating
+
+    #     }
+
+    # User.sites = db.relationship('TouristAttractionSite', secondary=user_site_table, backref=db.backref('users'))
 

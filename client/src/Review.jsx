@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
+import CommentSection from "./comment";
 // import { useHistory } from "react-router-dom";
 
 function ShowReviews() {
@@ -21,7 +21,7 @@ return(
         <p>Tourist: {review.user ? review.user.username : ''}</p>
 
         <h3>Add Your Thoughts</h3>
-        
+        <CommentSection reviewId={review.id}/>
     </div>
 )
 }

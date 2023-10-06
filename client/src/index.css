@@ -1,3 +1,6 @@
+/* @import "~bootstrap/scss/bootstrap"; */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -68,44 +71,66 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-
-/* div {
-width: 416px;
-height: 468px;
-flex-shrink: 0;
-background-image: url("image.jpg");
-background-size: cover; 
-background-position: center center; 
+* {
+  margin: 0;
+  font-family: "Quicksand";
+  color: #333;
+}
+#banner{
+  width: 100%; 
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 0px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+  background-size: cover;
 }
 
+#click > button {
+  background: #4cf7f7;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
 
+#comment > textarea{
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
 
-#banner {
-  color: #e00c4b;
-  font-family: Inter;
-  font-size: 13px;
+#comment > button{
+  position: absolute;
+  color: #fff;
+  border: 0;
+  padding: 25px;
+  border-radius: 8px;
+  cursor: pointer; 
   
- 
 }
+/* 
+ #home{
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  border-bottom: 1px solid #f2f2f2;
+}  */
 
-#banner {
-  position: relative; 
-}
+ #siteDropdown {
+  padding: 10px;
 
-h1 {
-  position: absolute; 
-  top: 0; 
-  left: 0; 
-  margin: 0; 
-}
+  /* display: flex; */
+  max-width: 500px;
+   /* align-items: center;  */
 
-h2 {
-  position: absolute; 
-  top: 250px;
-  text-align: center; 
-} */
-
-
+ }
 
 
 

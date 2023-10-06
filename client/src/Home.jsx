@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+
 function Home(){
 const [sites, setSites] = useState([]);
 const [selectedSite, setSelectedSite] = useState(null);
@@ -17,9 +18,8 @@ const handleSiteChange = (e) => {
 };
 
 return (
-        <div>
+        <div id='home'>
             <span>
-                <label htmlFor="siteDropdown">Select a Site</label>
                 <select
                     id="siteDropdown"
                      onChange={handleSiteChange}
@@ -33,14 +33,15 @@ return (
           ))}
             </select>
             </span>
-            <ul>
+            
                 <h1>Popular sites</h1>
             {sites.map((site) => (
-          <li key={site.id}>
+          <p key={site.id}>
             <Link to={`specificsite/${site.id}`}>{site.location}</Link>
-          </li>
+          </p>
             ))}
-            </ul>
+            
+
         </div>
     )
 }

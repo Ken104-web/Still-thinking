@@ -72,28 +72,36 @@ class GetReview(Resource):
             200,
         )
         return resp
-class PostReviews(Resource):
-     def post(self):
-        data = request.get_json()
-        if 'rating' not in data:
-            return make_response({'error': 'Rating is required'}, 400)
-
-        post_review = Review(rating=data['rating'])
-        db.session.add(post_review)
-        db.session.commit()
-
-        if post_review.id:
-            response_data = {
-                'message': 'Review added successfully',
-                'review_id': post_review.id,
-                'rating': post_review.rating
-            }
-            return make_response(response_data, 201)
-        else:
-            return make_response({'error': 'Failed to add review'}, 500)
-
-
 api.add_resource(GetReview, '/reviews')
+
+
+class GetEachReview(Resource):
+   def get(self, id):
+        each_review = Review.query.filter_by(id=id).first()
+        if each_review:
+            user_data = each_review.to_dict()
+            resp = make_response(
+                user_data,
+                200,
+            )
+            return resp
+        else:
+            raise ValueError('User not found')
+class PostEachReview(Resource):
+    def post(self):
+        data = request.get_json()
+
+        new_rating= Review(
+            user_id=data["id"],
+            rating=data['rating'],
+        )
+        db.session.add(new_rating)
+        db.session.commit()
+        return make_response(new_rating.to_dict(), 201)
+
+api.add_resource(GetEachReview, "/reviews/<int:id>")
+
+
 
 
 

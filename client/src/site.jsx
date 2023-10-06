@@ -22,8 +22,8 @@ function Site(){
         }
 
         return(
-            <div>
-                <h2>Site Details:</h2>
+            <div >
+                <h2>Site Details</h2>
                 
                     {/* {sites.map((review) => (
                         <p key={sites.id}>
@@ -32,11 +32,13 @@ function Site(){
                         <p>Description: <Link to={`showreview/${sites.id}`}>{sites.description}</Link></p> 
 
                     <p>Rating: {sites.rating}</p>
-                
-                <button onClick={countNoOfVisitors}>
+                <div id="click"><button onClick={countNoOfVisitors}>
                     Tap if you like the info
                 </button>
                 <p>Like Count: {visitorCount}</p>
+
+                </div>
+                
             </div>
         )
 }

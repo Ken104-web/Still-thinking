@@ -54,7 +54,7 @@ with app.app_context():
         "South of Mombasa, on the Indian Ocean",
         "Rift Valley, near Lake Naivasha",
         "Central Kenya",
-        "Northwestern Kenya",
+        "Northwestern Kenya", 
         "Runs through Kenya from north to south",
         "Rift Valley, near Naivasha",
         "Along the Kenyan coast",
